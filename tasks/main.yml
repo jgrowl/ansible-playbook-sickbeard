@@ -1,0 +1,14 @@
+---
+- name: sickbeard | install sickbeard dependencies
+  action: apt pkg=$item state=installed
+  with_items:
+    - git
+    - python
+    - python-cheetah
+
+# Make sure right version of python will be used
+- name: sickbeard | ensure /usr/local/bin/python2 links to /usr/bin/python
+  file: state=link src=/usr/bin/python path=/usr/local/bin/python2
+
+- name: sickbeard | Clone sickbeard source
+  git: repo=$sickbeard_repository dest=$sickbeard_src_dir version=$sickbeard_version
