@@ -14,6 +14,7 @@
   #  - {role: ssl-certs, when: https == 'true'}
   tasks:
   - include: tasks/main.yml
+  - include: tasks/install-init-script.yml
 
   #handlers:
   # - include: handlers/main.yml

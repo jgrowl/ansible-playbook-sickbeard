@@ -1,11 +1,11 @@
-#- name: gitlab | Ensure init script is installed
-#  copy: src=files/etc/init.d/gitlab dest=/etc/init.d/gitlab owner=root group=root mode=0755
+- name: sickbeard | ensure copy init script exists 
+  template: src=root/etc/default/sickbeard.j2 dest=/etc/default/sickbeard owner=root group=root mode=0755
 
-- name: gitlab | ensure copy of ssh config exists
-  template: src=etc/init.d/gitlab.j2 dest=/etc/init.d/gitlab owner=root group=root mode=0755
+- name: sickbeard | ensure copy init script exists 
+  template: src=root/etc/init.d/sickbeard.j2 dest=/etc/init.d/sickbeard owner=root group=root mode=0755
 
-- name: gitlab | Make GitLab start on boot 
-  command: update-rc.d gitlab defaults 21
+- name: sickbeard | Make sickbeard start on boot 
+  command: update-rc.d sickbeard defaults 21
 
-- name: gitlab | Start/Restart GitLab
-  service: name=gitlab state=started
+- name: sickbeard | Start/Restart sickbeard
+  service: name=sickbeard state=started
