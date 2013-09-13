@@ -15,5 +15,8 @@
   when: not sickbeard_use_ldap_user
 
 - name: sickbeard | Clone sickbeard source
-  git: repo=$sickbeard_repository dest=$sickbeard_src_dir version=$sickbeard_version owner=$sickbeard_user group=$sickbeard_user
+  git: repo=$sickbeard_repository dest=$sickbeard_src_dir version=$sickbeard_version 
+
+- name: sickbeard | ensure sickbeard home is owned by sickbeard user 
+  file: path=$sickbeard_user_home owner=$sickbeard_user group=$sickbeard_group recurse=yes state=directory
 
