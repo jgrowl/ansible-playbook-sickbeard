@@ -5,3 +5,7 @@ global_sudo_user: root
 sickbeard_repository: https://github.com/midgetspy/Sick-Beard.git 
 sickbeard_src_dir: /srv/sickbeard
 sickbeard_version: master
+
+sickbeard_user: sickbeard
+sickbeard_user_home: $sickbeard_src_dir 
+sickbeard_use_ldap_user: False

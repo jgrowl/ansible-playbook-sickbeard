@@ -10,5 +10,10 @@
 - name: sickbeard | ensure /usr/local/bin/python2 links to /usr/bin/python
   file: state=link src=/usr/bin/python path=/usr/local/bin/python2
 
+- name: sickbeard | Ensure sickbeard user is present
+  user: state=present name=$sickbeard_user home=$sickbeard_user_home system=yes shell=/bin/sh comment="Sickbeard" 
+  when: not sickbeard_use_ldap_user
+
 - name: sickbeard | Clone sickbeard source
-  git: repo=$sickbeard_repository dest=$sickbeard_src_dir version=$sickbeard_version
+  git: repo=$sickbeard_repository dest=$sickbeard_src_dir version=$sickbeard_version owner=$sickbeard_user group=$sickbeard_user
+
